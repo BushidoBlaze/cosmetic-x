@@ -1,44 +1,42 @@
-import {useEffect, useRef, useState, type ReactNode} from 'react';
-import './SectionTransition.css';
-
+import { useState, useEffect, useRef, type ReactNode } from "react";
+import "./SectionTransition.css";
 interface SectionTransitionProps {
-    children: ReactNode;
-    delay?: number;
+  children: ReactNode;
+  delay?: number;
 }
 
-export function SectionTransition({children, delay = 0}: SectionTransitionProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [visible, setVisible] = useState(false);
+export function SectionTransition({
+  children,
+  delay = 0,
+}: SectionTransitionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
+  useEffect(() => {
+    if (!ref.current || isVisible) return;
 
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            setVisible(true);
-            return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
         }
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.unobserve(el);
-                }
-            },
-            {threshold: 0.15, rootMargin: '0px 0px -10% 0px'},
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div
-            ref={ref}
-            className={`section-transition${visible ? ' section-transition--visible' : ''}`}
-            style={delay ? {transitionDelay: `${delay}ms`} : undefined}
-        >
-            {children}
-        </div>
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  const className = `section-transition ${isVisible ? "section-transition--visible" : ""}`.trim();
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
+      {children}
+    </div>
+  );
 }

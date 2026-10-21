@@ -1,1 +1,1 @@
-export {useScrollReveal} from './useScrollReveal';
+export { default as useScrollReveal } from "./useScrollReveal";
