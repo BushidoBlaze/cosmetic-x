@@ -1,13 +1,14 @@
-import { Hero } from "@/widgets/hero";
-import { Categories } from "@/widgets/categories";
-import { ProductsList } from "@/widgets/productList";
-import { Services } from "@/widgets/services";
-import { FullScreenVideo } from "@/shared/ui/fullScreenVideo";
-import { GlobalTitle } from "@/shared/ui/globalTitle";
-import { SectionTransition } from "@/shared/ui/sectionTransition";
+import { Hero } from "@/sections/hero/ui/Hero.tsx";
+import { Categories } from "@/sections/categories/ui/Categories.tsx";
+import { ProductsList } from "@/sections/productList/ProductsList.tsx";
+import { Services } from "@/sections/services/ui/Services.tsx";
 
-import { soleilViiData, noirEclatData, nuitDopaleData } from "../model/data";
-import { MOCKS_PRODUCT_CARD } from "@/entities/product/model/data";
+import { FullScreenVideo } from "@/ui/fullScreenVideo/FullScreenVideo.tsx";
+import { GlobalTitle } from "@/ui/globalTitle/GlobalTitle.tsx";
+import { SectionTransition } from "@/ui/sectionTransition/SectionTransition.tsx";
+
+import { soleilViiData, noirEclatData, nuitDopaleData } from "../model/data.ts";
+import { MOCKS_PRODUCT_CARD } from "@/components/productCard/model/data.ts";
 
 export function Home() {
   const soleilProducts = MOCKS_PRODUCT_CARD.filter(

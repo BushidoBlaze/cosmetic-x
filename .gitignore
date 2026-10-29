@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 #features
-src/entities/cardReduce/
-src/entities/Practise.tsx
+src/components/cardReduce/
