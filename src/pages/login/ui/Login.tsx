@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { NavLink } from "react-router-dom";
 import { ArrowRight, Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { AuthLayout } from "@/ui/authLayout/AuthLayout.tsx";
+import { AuthLayout } from "@/layouts/authLayout/AuthLayout";
 
 export function Login() {
   const [email, setEmail] = useState("");

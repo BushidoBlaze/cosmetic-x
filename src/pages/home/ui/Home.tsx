@@ -1,7 +1,7 @@
-import { Hero } from "@/sections/hero/ui/Hero.tsx";
-import { Categories } from "@/sections/categories/ui/Categories.tsx";
-import { ProductsList } from "@/sections/productList/ProductsList.tsx";
-import { Services } from "@/sections/services/ui/Services.tsx";
+import { Hero } from "@/components/sections/hero/ui/Hero.tsx";
+import { Categories } from "@/components/sections/categories/ui/Categories.tsx";
+import { ProductsList } from "@/components/sections/productList/ProductsList.tsx";
+import { Services } from "@/components/sections/services/ui/Services.tsx";
 
 import { FullScreenVideo } from "@/ui/fullScreenVideo/FullScreenVideo.tsx";
 import { GlobalTitle } from "@/ui/globalTitle/GlobalTitle.tsx";

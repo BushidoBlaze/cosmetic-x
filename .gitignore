@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 #features
-src/components/cardReduce/
+src/components/cartReducer/
