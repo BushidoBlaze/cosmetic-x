@@ -25,3 +25,4 @@ dist-ssr
 
 #features
 src/components/cartReducer/
+src/pages/search/

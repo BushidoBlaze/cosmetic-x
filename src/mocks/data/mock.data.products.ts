@@ -1,4 +1,4 @@
-import type { Product } from "./types.ts";
+import type { Product } from "@/components/interactiveSearch/model/types.ts";
 
 export const mockProducts: Product[] = [
   {
