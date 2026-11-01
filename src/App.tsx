@@ -5,8 +5,13 @@ import { BackToTopButton } from "./ui/backToTop/BackToTop.tsx"; //компоне
 
 // Использована единая точка входа для всех export-import для папки кастомных страниц
 import Home from "./pages/home/ui/Home.tsx"; // домашняя страница приложения
+
+import ProductPage from "./pages/product/ProductPage.tsx"; // страница товара
+import SearchPage from "./pages/search/SearchPage.tsx"; // страница поиска товаров
+
 import Login from "./pages/login/ui/Login.tsx"; // страница входа (пока только UI/UX)
 import Register from "./pages/register/ui/Register.tsx"; // страница регистрации (пока только UI/UX)
+
 import NotFound from "./pages/notFound/ui/NotFound.tsx"; // страница 404
 
 // Единый лаяут (оболочка) приложения
@@ -28,8 +33,8 @@ function AppRoutes() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
 
-          {/*Заглушка - element={<p>Product page (WIP)</p>}*/}
-          <Route path="/search/:id" element={<p>Product page (WIP)</p>} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
         </Route>
 
         <Route path="/log-in" element={<Login />} />

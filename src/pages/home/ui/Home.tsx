@@ -8,13 +8,13 @@ import { GlobalTitle } from "@/ui/globalTitle/GlobalTitle.tsx";
 import { SectionTransition } from "@/ui/sectionTransition/SectionTransition.tsx";
 
 import { soleilViiData, noirEclatData, nuitDopaleData } from "../model/data.ts";
-import { MOCKS_PRODUCT_CARD } from "@/components/productCard/model/data.ts";
+import { MOCKS_PRODUCTS } from "@/mocks/data/mock.data.products.ts";
 
 export default function Home() {
-  const soleilProducts = MOCKS_PRODUCT_CARD.filter(
+  const soleilProducts = MOCKS_PRODUCTS.filter(
     (product) => product.label === "soleil",
   );
-  const nuitProducts = MOCKS_PRODUCT_CARD.filter(
+  const nuitProducts = MOCKS_PRODUCTS.filter(
     (product) => product.label === "nuit",
   );
 

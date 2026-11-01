@@ -1,5 +1,5 @@
-import { ProductCard } from "@/components/productCard/ui/ProductCard.tsx";
-import type { ProductsListProps } from "@/components/productCard/model/data";
+import { ProductCard } from "@/components/product/productCard/ui/ProductCard";
+import type { ProductsListProps } from "@/components/product/productCard/model/types.ts";
 import "./ProductsList.css";
 
 export function ProductsList({ products }: ProductsListProps) {

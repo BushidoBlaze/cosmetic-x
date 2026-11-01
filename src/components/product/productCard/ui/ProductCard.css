@@ -1,6 +1,8 @@
 .product-card {
-    width: 304px;
-    max-width: 100%;
+    position: relative;
+
+    width: 100%;
+    max-width: 304px;
 
     display: flex;
     flex-direction: column;
@@ -118,13 +120,25 @@
     padding: 0 2px;
 }
 
-.product-card__title {
+.product-card__title,
+.product-card__link {
     font-family: Raleway, sans-serif, Arial;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
 
     color: #1a1a1a;
+}
+
+.product-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.product-card__favorite,
+.product-card__quick-add {
+  z-index: 1;
 }
 
 .product-card__price {

@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from "msw";
-import { mockProducts } from "@/mocks/data/mock.data.products.ts";
+import { MOCKS_PRODUCTS } from "@/mocks/data/mock.data.products.ts";
 
 export const handlers = [
   // Поиск товаров
@@ -14,7 +14,7 @@ export const handlers = [
     }
 
     // Фильтруем массив по названию и бренду
-    const filtered = mockProducts.filter((product) => {
+    const filtered = MOCKS_PRODUCTS.filter((product) => {
       return (
         product.name.toLowerCase().includes(searchQuery) ||
         product.brand.toLowerCase().includes(searchQuery)
@@ -30,7 +30,7 @@ export const handlers = [
 
     await delay(1500); // Небольшая задержка сети (имитация задержки)
 
-    const product = mockProducts.find((product) => {
+    const product = MOCKS_PRODUCTS.find((product) => {
       return product.id === id;
     });
 

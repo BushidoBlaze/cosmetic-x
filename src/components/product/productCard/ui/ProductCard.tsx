@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
-import type { ProductCardProps } from "../model/data.ts";
+
+import type { ProductCardProps } from "../model/types.ts";
 
 import "./ProductCard.css";
 
-export function ProductCard({ url, name, price }: ProductCardProps) {
+export function ProductCard({ id, image, name, price }: ProductCardProps) {
   const [favorite, setFavorite] = useState(false);
 
   return (
@@ -12,7 +14,7 @@ export function ProductCard({ url, name, price }: ProductCardProps) {
       <div className="product-card__media">
         <img
           className="product-card__image"
-          src={url}
+          src={image}
           alt={name}
           loading="lazy"
         />
@@ -31,7 +33,11 @@ export function ProductCard({ url, name, price }: ProductCardProps) {
       </div>
 
       <div className="product-card__info">
-        <h4 className="product-card__title">{name}</h4>
+        <h4 className="product-card__title">
+          <Link to={`/product/${id}`} className="product-card__link">
+            {name}
+          </Link>
+        </h4>
         <p className="product-card__price">{price}$</p>
       </div>
     </article>
