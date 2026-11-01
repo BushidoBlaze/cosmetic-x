@@ -10,7 +10,7 @@ import { SectionTransition } from "@/ui/sectionTransition/SectionTransition.tsx"
 import { soleilViiData, noirEclatData, nuitDopaleData } from "../model/data.ts";
 import { MOCKS_PRODUCT_CARD } from "@/components/productCard/model/data.ts";
 
-export function Home() {
+export default function Home() {
   const soleilProducts = MOCKS_PRODUCT_CARD.filter(
     (product) => product.label === "soleil",
   );

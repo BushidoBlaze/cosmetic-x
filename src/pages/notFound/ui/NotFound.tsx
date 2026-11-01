@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import HeroImage from "/images/notFound/404.webp";
 import "./NotFound.css";
 
-export function NotFound() {
+export default function NotFound() {
   return (
     <section className="not-found">
       <img
