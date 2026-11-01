@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { Product } from "../model/types.ts";
+import type { Product } from "@/shared/types/product.ts";
 
 type SearchResult = {
   query: string;

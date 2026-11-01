@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from "msw";
-import { mockProducts } from "@/components/interactiveSearch/model/mocks.data.ts";
+import { MOCKS_PRODUCTS } from "@/mocks/data/mock.data.products.ts";
 
 export const handlers = [
   // Поиск товаров
@@ -14,7 +14,7 @@ export const handlers = [
     }
 
     // Фильтруем массив по названию и бренду
-    const filtered = mockProducts.filter((product) => {
+    const filtered = MOCKS_PRODUCTS.filter((product) => {
       return (
         product.name.toLowerCase().includes(searchQuery) ||
         product.brand.toLowerCase().includes(searchQuery)
@@ -22,5 +22,23 @@ export const handlers = [
     });
 
     return HttpResponse.json(filtered);
+  }),
+
+  // Поиск товара по id
+  http.get("/api/products/:id", async ({ params }) => {
+    const id = Number(params.id);
+
+    await delay(1500); // Небольшая задержка сети (имитация задержки)
+
+    const product = MOCKS_PRODUCTS.find((product) => {
+      return product.id === id;
+    });
+
+    // Если товара с таким id нет возвращаем 404
+    if (!product) {
+      return new HttpResponse(null, { status: 404 });
+    }
+
+    return HttpResponse.json(product);
   }),
 ];

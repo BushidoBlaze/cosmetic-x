@@ -27,6 +27,8 @@
 ## Нововведения
 
 - Интерактивный поиск по товарам ![New](https://img.shields.io/badge/New-brightgreen)
+- Страница результатов поиска ![Early access](https://img.shields.io/badge/early_access-orange)
+- Страница товара ![Early access](https://img.shields.io/badge/early_access-orange)
 
 ## Структура проекта
 
@@ -42,7 +44,7 @@ src/
 │   ├── headerAdvertising/      # Рекламная строка
 │   ├── footer/                 # Подвал
 │   ├── interactiveSearch/      # Интерактивный поиск товаров
-│   ├── productCard/            # Карточка товара
+│   ├── product/                # Карточка товара
 │   └── sections/               # Секции страниц
 ├── layouts/        # Layout-обёртки
 ├── mocks/          # Фейковые данные (mock-ответы)
@@ -50,7 +52,8 @@ src/
 ├── shared/         # Общие ресурсы
 │   ├── assets/                 # Локальные шрифты
 │   ├── hooks/                  # Хуки
-│   └── styles/                 # Глобальные стили, reset, подключение шрифтов
+│   ├── styles/                 # Глобальные стили, reset, подключение шрифтов
+│   └── types/                  # Общие и глобальные типы
 ├── ui/             # Переиспользуемые UI-элементы
 ├── App.tsx         # Корневой компонент и маршруты
 └── main.tsx        # Точка входа
