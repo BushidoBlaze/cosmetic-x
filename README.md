@@ -3,15 +3,12 @@
 ## Стек технологий
 
 ### Основные технологии:
-- **React 19**
-- **TypeScript 5.9**
-- **Vite 8**
-- **CSS 3**
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev) [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org) [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev) [![CSS](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
 
 ### Дополнительные библиотеки:
-- **lucide-react** `^0.577.0` — интерактивные иконки.
-- **react-router-dom** `^7.13.1` — декларативный роутинг.
-- **msw** `^3.0.3` (Mock Service Worker) — перехват и мокирование сетевых HTTP-запросов на уровне браузера и Node.js.
+- **[lucide-react](https://www.npmjs.com/package/lucide-react)** `^0.577.0` — интерактивные иконки.
+- **[react-router-dom](https://www.npmjs.com/package/react-router-dom)** `^7.13.1` — декларативный роутинг.
+- **[msw](https://www.npmjs.com/package/msw)** `^3.0.3` (Mock Service Worker) — перехват и мокирование сетевых HTTP-запросов на уровне браузера и Node.js.
 
 ## Возможности
 
