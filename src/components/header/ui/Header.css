@@ -137,6 +137,12 @@
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
+.nav-icons__link--search-bar {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
 .nav-icons__link:hover {
     background-color: rgba(255, 255, 255, 0.08);
     transform: translateY(-1px);
