@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import HeroHomeImage from "/images/home-hero-image.jpg";
+
 import { heroData } from "../model/data";
+
+import HeroHomeImage from "/images/home-hero-image.jpg";
+
 import "./Hero.css";
 
 export function Hero() {
