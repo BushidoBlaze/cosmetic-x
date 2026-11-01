@@ -1,13 +1,7 @@
-* {
-  scrollbar-color: #ffffff #000000;
-  scrollbar-width: auto;
-}
-
 html,
 body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 img,

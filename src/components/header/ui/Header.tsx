@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { navigation } from "../model/data";
+import { Menu, X, Search } from "lucide-react";
+
+import InteractiveSearch from "@/components/interactiveSearch/ui/InteractiveSearch.tsx";
+
+import { navigation } from "../model/data.ts";
 import "./Header.css";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -17,6 +21,17 @@ export function Header() {
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isSearchOpen) return;
+
+    // Запрет на прокрутку страницы пока открыт поиск
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSearchOpen]);
 
   // Функция закрытия меню при клике на ссылки
   const closeMenu = () => setIsMenuOpen(false);
@@ -62,6 +77,18 @@ export function Header() {
           </nav>
 
           <ul className="nav-icons">
+            <li className="nav-icons__item">
+              <button
+                type="button"
+                className="nav-icons__link nav-icons__link--search-bar"
+                aria-label={isSearchOpen ? "Close search" : "Open search"}
+                aria-expanded={isSearchOpen}
+                onClick={() => setIsSearchOpen((v) => !v)}
+              >
+                <Search size={20} strokeWidth={1.5} />
+              </button>
+            </li>
+
             {navigation.icons.map(({ to, icon: Icon, ariaLabel, badge }) => (
               <li className="nav-icons__item" key={to}>
                 <NavLink
@@ -81,6 +108,15 @@ export function Header() {
           </ul>
         </div>
       </header>
+
+      {isSearchOpen && (
+        <>
+          <InteractiveSearch
+            onNavigate={() => setIsSearchOpen(false)}
+            onClose={() => setIsSearchOpen(false)}
+          />
+        </>
+      )}
 
       <div
         className={`mobile-drawer${isMenuOpen ? " mobile-drawer--open" : ""}`}

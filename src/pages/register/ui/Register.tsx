@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 import { ArrowRight, Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { AuthLayout } from "@/layouts/authLayout/AuthLayout";
 
-export function Register() {
+import RegisterPageImage from "/images/registerPage/hero-image.jpg";
+
+export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +21,8 @@ export function Register() {
 
   return (
     <AuthLayout
+      image={RegisterPageImage}
+      variant="register"
       eyebrow="Account"
       title="Create an account"
       subtitle="Save your favourite collections, track orders and enjoy personalised offers."

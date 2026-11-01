@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 import { ArrowRight, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { AuthLayout } from "@/layouts/authLayout/AuthLayout";
 
-export function Login() {
+import loginPageImage from "/images/logInPage/hero-image.jpg";
+
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +20,8 @@ export function Login() {
 
   return (
     <AuthLayout
+      image={loginPageImage}
+      variant="login"
       eyebrow="Account"
       title="Welcome back"
       subtitle="Sign in to access your collections, orders and personal preferences."
