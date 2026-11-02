@@ -1,56 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X, Search } from "lucide-react";
 
-import InteractiveSearch from "@/components/interactiveSearch/ui/InteractiveSearch.tsx";
+import { useLockBodyScroll } from "../hooks/useLockBodyScroll.ts";
+import { useScrolled } from "../hooks/useScrolled.ts";
+
+import { MobileDrawer } from "./MobileDrawer.tsx";
+import { InteractiveSearch } from "@/components/interactiveSearch/ui/InteractiveSearch.tsx";
 
 import { navigation } from "../model/data.ts";
 import "./Header.css";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScrolled(); // кастомный хук, который следит за прокруткой страницы и возвращает true, если страница прокручена больше чем на 20px
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isSearchOpen) return;
-
-    // Запрет на прокрутку страницы пока открыт поиск
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isSearchOpen]);
-
-  // Функция закрытия меню при клике на ссылки
-  const closeMenu = () => setIsMenuOpen(false);
-
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `nav-menu__link${isActive ? " nav-menu__link--active" : ""}`;
+  useLockBodyScroll(isMenuOpen || isSearchOpen); // кастомный хук, который блокирует прокрутку страницы, если открыто меню или панель поиска
 
   return (
     <>
       <header className={`header${isScrolled ? " header--scrolled" : ""}`}>
         <div className="header__inner">
           <div className="header__left">
+            {/* Бургер-меню при маленьких экранах (ширина меньше 1024px)*/}
             <button
               type="button"
-              className="header__burger"
+              className="header__burger-button"
               onClick={() => setIsMenuOpen((v) => !v)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-drawer"
             >
               {isMenuOpen ? (
                 <X size={22} strokeWidth={1.5} />
@@ -58,17 +35,19 @@ export function Header() {
                 <Menu size={22} strokeWidth={1.5} />
               )}
             </button>
-
-            <NavLink to="/" className="header__logo">
-              X|Cos
-            </NavLink>
           </div>
 
-          <nav className="header__nav" aria-label="Primary">
-            <ul className="nav-menu">
-              {navigation.menu.map((item) => (
-                <li className="nav-menu__item" key={item.to}>
-                  <NavLink className={linkClass} to={item.to}>
+          {/* Навигационное меню - ссылки */}
+          <nav className="header__nav header__nav--links">
+            <ul className="links-list">
+              {navigation.menuArray.map((item) => (
+                <li className="links-list__item" key={item.to}>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `links-list__link${isActive ? " links-list__link--active" : ""}`;
+                    }}
+                    to={item.to}
+                  >
                     {item.label}
                   </NavLink>
                 </li>
@@ -76,76 +55,55 @@ export function Header() {
             </ul>
           </nav>
 
-          <ul className="nav-icons">
-            <li className="nav-icons__item">
-              <button
-                type="button"
-                className="nav-icons__link nav-icons__link--search-bar"
-                aria-label={isSearchOpen ? "Close search" : "Open search"}
-                aria-expanded={isSearchOpen}
-                onClick={() => setIsSearchOpen((v) => !v)}
-              >
-                <Search size={20} strokeWidth={1.5} />
-              </button>
-            </li>
-
-            {navigation.icons.map(({ to, icon: Icon, ariaLabel, badge }) => (
-              <li className="nav-icons__item" key={to}>
-                <NavLink
-                  className="nav-icons__link"
-                  to={to}
-                  aria-label={ariaLabel}
+          {/* Навигационное меню - иконки */}
+          <nav className="header__nav header__nav--icons">
+            <ul className="icons-list">
+              <li className="icons-list__item">
+                {/* Поисковая панель */}
+                <button
+                  type="button"
+                  className="search-bar__btn"
+                  onClick={() => setIsSearchOpen((v) => !v)}
                 >
-                  <Icon size={20} strokeWidth={1.5} />
-                  {badge !== undefined && badge > 0 && (
-                    <span className="nav-icons__badge" aria-hidden="true">
-                      {badge > 99 ? "99+" : badge}
-                    </span>
-                  )}
-                </NavLink>
+                  {/* input является визуальным (не функциональным) */}
+                  <input
+                    type="text"
+                    placeholder="Searching..."
+                    className="search-bar__fake-input"
+                    // делаем input некликабельным
+                    tabIndex={-1}
+                    readOnly
+                  />
+                  <Search size={20} strokeWidth={1.5} />
+                </button>
               </li>
-            ))}
-          </ul>
+
+              {navigation.iconsArray.map(({ to, icon: LucideIcons, badge }) => (
+                <li className="icons-list__item" key={to}>
+                  <NavLink className="icons-list__link" to={to}>
+                    <LucideIcons size={20} strokeWidth={1.5} />
+
+                    {badge !== undefined && badge > 0 && (
+                      <span className="icons-list__badge">
+                        {badge > 99 ? "99+" : badge}
+                      </span>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </header>
 
       {isSearchOpen && (
-        <>
-          <InteractiveSearch
-            onNavigate={() => setIsSearchOpen(false)}
-            onClose={() => setIsSearchOpen(false)}
-          />
-        </>
+        <InteractiveSearch
+          onNavigate={() => setIsSearchOpen(false)}
+          onClose={() => setIsSearchOpen(false)}
+        />
       )}
 
-      <div
-        className={`mobile-drawer${isMenuOpen ? " mobile-drawer--open" : ""}`}
-        id="mobile-drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={!isMenuOpen}
-      >
-        <ul className="mobile-drawer__list">
-          {navigation.menu.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                className={({ isActive }) =>
-                  `mobile-drawer__link${isActive ? " mobile-drawer__link--active" : ""}`
-                }
-                to={item.to}
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div
-        className={`mobile-drawer__backdrop${isMenuOpen ? " mobile-drawer__backdrop--visible" : ""}`}
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
+      <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </>
   );
 }
