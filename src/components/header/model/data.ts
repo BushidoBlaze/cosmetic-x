@@ -1,8 +1,8 @@
 import {ShoppingBag, MapPin, UserCircle} from 'lucide-react';
-import type {Navigation} from './types';
+import type {Navigation} from './types.ts';
 
 export const navigation: Navigation = {
-    menu: [
+    menuArray: [
         {
             to: '/catalog',
             label: 'new items'
@@ -28,22 +28,19 @@ export const navigation: Navigation = {
             label: 'make-up'
         },
     ],
-    icons: [
+    iconsArray: [
         {
             to: '/cart',
             icon: ShoppingBag,
-            ariaLabel: 'Cart',
             badge: 2,
         },
         {
             to: '/about',
             icon: MapPin,
-            ariaLabel: 'Location'
         },
         {
             to: '/log-in',
             icon: UserCircle,
-            ariaLabel: 'Profile'
         }
     ]
 };
