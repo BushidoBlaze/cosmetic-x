@@ -1,18 +1,17 @@
 import type {LucideIcon} from 'lucide-react';
 
-export interface NavMenuItem {
+export type NavMenuItem = {
     to: string;
     label: string;
-}
+};
 
-export interface NavIconItem {
+export type NavIconItem = {
     to: string;
     icon: LucideIcon;
-    ariaLabel: string;
     badge?: number;
 }
 
-export interface Navigation {
-    menu: NavMenuItem[];
-    icons: NavIconItem[];
+export type Navigation = {
+    menuArray: NavMenuItem[];
+    iconsArray: NavIconItem[];
 }

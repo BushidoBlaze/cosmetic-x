@@ -15,7 +15,7 @@ type InteractiveSearchProps = {
   onClose?: () => void; // колбэк для закрытия панели поиска без перехода
 };
 
-export default function InteractiveSearch({
+export function InteractiveSearch({
   onNavigate,
   onClose,
 }: InteractiveSearchProps) {

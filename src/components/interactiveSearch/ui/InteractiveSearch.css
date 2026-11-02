@@ -123,29 +123,6 @@
   color: #000000;
 }
 
-.search-bar__find-button {
-  width: 100%;
-  display: flex;
-  text-align: start;
-  align-items: center;
-  gap: 10px;
-
-  font-family: Raleway, Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.4px;
-
-  color: #ffffff;
-  background: none;
-
-  padding: 12px;
-  border: none;
-  border-radius: 999px;
-
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
 .search-bar__button {
   grid-column: 3;
   display: block;
@@ -168,6 +145,11 @@
     color 0.15s ease,
     background-color 0.15s ease,
     border-color 0.15s ease;
+
+  /* Для медиа-запросов */
+  white-space: nowrap;
+  min-width: max-content;
+  width: auto;
 }
 
 .search-bar__button:hover {
@@ -214,6 +196,29 @@
   outline-offset: 3px;
 }
 
+.search-bar__find-button {
+  width: 100%;
+  display: flex;
+  text-align: start;
+  align-items: center;
+  gap: 10px;
+
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+
+  color: #ffffff;
+  background: none;
+
+  padding: 12px;
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
 /* Наведение мыши и фокус с клавиатуры */
 .search-bar__find-button:hover,
 .search-bar__find-button:focus-visible {
@@ -239,4 +244,136 @@
   padding: 14px;
 
   color: #ffffff;
+}
+
+/* ------------------------------ */
+/* Медиа-запросы */
+
+/* Десктопы */
+@media screen and (max-width: 1024px) {
+  .search-bar__container {
+    padding: 32px 20px 0;
+  }
+
+  .search-bar__field {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 8px;
+  }
+
+  .search-bar__control {
+    grid-column: 1;
+  }
+
+  .search-bar__button {
+    grid-column: 2;
+    white-space: nowrap;
+  }
+
+  .close-button {
+    grid-column: 3;
+    justify-self: auto;
+  }
+}
+
+/* Планшеты */
+@media screen and (max-width: 768px) {
+  .search-bar__container {
+    padding: 24px 16px 0;
+  }
+
+  .search-bar__input {
+    padding: 0.875rem 1.25rem;
+    font-size: 16px;
+  }
+
+  .search-bar__hint {
+    left: 1.25rem;
+  }
+
+  .search-bar__loader,
+  .search-bar__empty {
+    font-size: 16px;
+  }
+}
+
+/* Мобильные устройства */
+@media screen and (max-width: 480px) {
+  .search-bar__container {
+    padding: 16px 12px 0;
+  }
+
+  .search-bar__field {
+    column-gap: 6px;
+  }
+
+  .search-bar__input {
+    padding: 0.75rem 1rem;
+    letter-spacing: 0.8px;
+  }
+
+  .search-bar__hint {
+    left: 1rem;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+  }
+
+  .search-bar__button {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .close-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .search-bar__list {
+    max-height: 60vh;
+    padding: 8px 0;
+  }
+
+  .search-bar__find-button {
+    padding: 10px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .search-bar__loader,
+  .search-bar__empty {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+/* Смартфоны */
+@media screen and (max-width: 360px) {
+  .search-bar__container {
+    padding: 12px 8px 0;
+  }
+
+  .search-bar__field {
+    column-gap: 4px;
+  }
+
+  .search-bar__input {
+    padding: 0.625rem 0.875rem;
+  }
+
+  .search-bar__hint {
+    left: 0.875rem;
+    font-size: 12px;
+  }
+
+  .search-bar__button {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .close-button {
+    width: 40px;
+    height: 40px;
+  }
 }
