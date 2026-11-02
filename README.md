@@ -26,6 +26,17 @@
 - Интерактивный поиск по товарам ![New](https://img.shields.io/badge/New-brightgreen)
 - Страница результатов поиска ![Early access](https://img.shields.io/badge/early_access-orange)
 - Страница товара ![Early access](https://img.shields.io/badge/early_access-orange)
+- Обновлён дизайн шапки страницы для десктоп и моб. устройств ![New](https://img.shields.io/badge/New-brightgreen)
+
+## Скриншоты
+### Hero-секция
+<img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/8ca92890-f666-4072-9a0e-5786c741d961" />
+
+### Товарная-секция
+<img width="1918" height="903" alt="image" src="https://github.com/user-attachments/assets/ecc40219-1b67-44ab-83e5-c72756a7298e" />
+
+### Секции с видео - о товаре
+<img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/069d9110-9efb-4c71-ab77-c1a861159f51" />
 
 ## Структура проекта
 
