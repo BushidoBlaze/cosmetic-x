@@ -55,29 +55,30 @@ export function Header() {
             </ul>
           </nav>
 
+          {/* Поисковая панель */}
+          <div className="header__search">
+            {/* Поисковая панель */}
+            <button
+              type="button"
+              className="search-bar__btn"
+              onClick={() => setIsSearchOpen((v) => !v)}
+            >
+              {/* input является визуальным (не функциональным) */}
+              <input
+                type="text"
+                placeholder="Searching..."
+                className="search-bar__fake-input"
+                // делаем input некликабельным
+                tabIndex={-1}
+                readOnly
+              />
+              <Search size={20} strokeWidth={1.5} />
+            </button>
+          </div>
+
           {/* Навигационное меню - иконки */}
           <nav className="header__nav header__nav--icons">
             <ul className="icons-list">
-              <li className="icons-list__item">
-                {/* Поисковая панель */}
-                <button
-                  type="button"
-                  className="search-bar__btn"
-                  onClick={() => setIsSearchOpen((v) => !v)}
-                >
-                  {/* input является визуальным (не функциональным) */}
-                  <input
-                    type="text"
-                    placeholder="Searching..."
-                    className="search-bar__fake-input"
-                    // делаем input некликабельным
-                    tabIndex={-1}
-                    readOnly
-                  />
-                  <Search size={20} strokeWidth={1.5} />
-                </button>
-              </li>
-
               {navigation.iconsArray.map(({ to, icon: LucideIcons, badge }) => (
                 <li className="icons-list__item" key={to}>
                   <NavLink className="icons-list__link" to={to}>
