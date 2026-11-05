@@ -14,10 +14,13 @@
 
     color: #ffffff;
     background-color: rgba(10, 10, 10, 0.85);
+
+    -webkit-backdrop-filter: blur(10px);  /* для старых версий Safari */
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+
     cursor: pointer;
 
     opacity: 0;
