@@ -11,16 +11,23 @@ import { InteractiveSearch } from "@/components/interactiveSearch/ui/Interactive
 import { navigation } from "../model/data.ts";
 import "./Header.css";
 
-export function Header() {
-  const isScrolled = useScrolled(); // кастомный хук, который следит за прокруткой страницы и возвращает true, если страница прокручена больше чем на 20px
+type HeaderProps = {
+  transparentOnTop?: boolean;
+};
+
+export function Header({ transparentOnTop = false }: HeaderProps) {
+  const isScrolled = useScrolled(20); // кастомный хук, который следит за прокруткой страницы и возвращает true, если страница прокручена больше чем на 20px
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useLockBodyScroll(isMenuOpen || isSearchOpen); // кастомный хук, который блокирует прокрутку страницы, если открыто меню или панель поиска
 
+  const isTransparent = transparentOnTop && !isScrolled; // если transparentOnTop = true, то шапка будет прозрачной, если страница не прокручена
   return (
     <>
-      <header className={`header${isScrolled ? " header--scrolled" : ""}`}>
+      <header
+        className={`header${isTransparent ? " header--transparent" : ""}`}
+      >
         <div className="header__inner">
           <div className="header__left">
             {/* Бургер-меню при маленьких экранах (ширина меньше 1024px)*/}
