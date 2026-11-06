@@ -6,6 +6,7 @@ import { SearchEmpty } from "./components/SearchEmpty.tsx";
 import { SearchHeader } from "./components/SearchHeader.tsx";
 import { SearchResults } from "./components/SearchResults.tsx";
 import { SearchMoreResult } from "./components/SearchMoreResult.tsx";
+import { ProductGridSkeleton } from "@/components/productGridSkeleton/ProductGridSkeleton.tsx";
 
 // Хуки
 import { useProductSearch } from "@/components/interactiveSearch/hooks/useProductSearch.ts";
@@ -29,7 +30,7 @@ export function SearchPage() {
 
   // В случае загрузки контента
   if (isLoading) {
-    <p className="spianer">Сюда можно спинер загрузки прикрутить</p>;
+    content = <ProductGridSkeleton count={8} />; // Имитация загрузки (скелетон)
 
     // В случае если после загрузки контента, похожий контент не обнаружен
   } else if (products.length === 0) {
