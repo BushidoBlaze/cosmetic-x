@@ -5,9 +5,11 @@ import { useSearchParams } from "react-router-dom";
 import { SearchEmpty } from "./components/SearchEmpty.tsx";
 import { SearchHeader } from "./components/SearchHeader.tsx";
 import { SearchResults } from "./components/SearchResults.tsx";
+import { SearchMoreResult } from "./components/SearchMoreResult.tsx";
 
 // Хуки
 import { useProductSearch } from "@/components/interactiveSearch/hooks/useProductSearch.ts";
+import { useShowMore } from "./hooks/useShowMore.ts";
 
 import "./SearchPage.css";
 
@@ -19,9 +21,15 @@ export function SearchPage() {
 
   let content; // Контент на странице
 
+  // Вызов хука для кнопки (показать больше)
+  const { visibleItems, hasMore, showMore } = useShowMore({
+    items: products,
+    resetKey: query,
+  });
+
   // В случае загрузки контента
   if (isLoading) {
-    <p className="spianer">Сюда можно спинер загрузки прикрутить</p>
+    <p className="spianer">Сюда можно спинер загрузки прикрутить</p>;
 
     // В случае если после загрузки контента, похожий контент не обнаружен
   } else if (products.length === 0) {
@@ -36,7 +44,8 @@ export function SearchPage() {
     content = (
       <>
         <SearchHeader count={products.length} />
-        <SearchResults products={products} />
+        <SearchResults products={visibleItems} />
+        {hasMore && <SearchMoreResult text="Show more" onClick={showMore} />}
       </>
     );
   }
