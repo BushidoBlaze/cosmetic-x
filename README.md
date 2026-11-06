@@ -9,6 +9,7 @@
 - **[lucide-react](https://www.npmjs.com/package/lucide-react)** `^0.577.0` — интерактивные иконки.
 - **[react-router-dom](https://www.npmjs.com/package/react-router-dom)** `^7.13.1` — декларативный роутинг.
 - **[msw](https://www.npmjs.com/package/msw)** `^3.0.3` (Mock Service Worker) — перехват и мокирование сетевых HTTP-запросов на уровне браузера и Node.js.
+- **[react-loading-skeleton](https://www.npmjs.com/package/react-loading-skeleton)** `^3.5.0` — скелетон-заглушки на время загрузки данных.
 
 ## Возможности
 
@@ -24,7 +25,7 @@
 ## Нововведения
 
 - Интерактивный поиск по товарам ![New](https://img.shields.io/badge/New-brightgreen)
-- Страница результатов поиска ![Early access](https://img.shields.io/badge/early_access-orange)
+- Страница результатов поиска ![Ready](https://img.shields.io/badge/ready-brightgreen)
 - Страница товара ![Early access](https://img.shields.io/badge/early_access-orange)
 - Обновлён дизайн шапки страницы для десктоп и моб. устройств ![New](https://img.shields.io/badge/New-brightgreen)
 
@@ -37,6 +38,9 @@
 
 ### Секции с видео - о товаре
 <img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/069d9110-9efb-4c71-ab77-c1a861159f51" />
+
+### Секция результатов поиска по всем товарам ![New](https://img.shields.io/badge/New-brightgreen)
+<img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/175ac458-65ba-484f-a016-fbed741e0b8d" />
 
 ## Структура проекта
 
@@ -53,6 +57,7 @@ src/
 │   ├── footer/                 # Подвал
 │   ├── interactiveSearch/      # Интерактивный поиск товаров
 │   ├── product/                # Карточка товара
+│   ├── productGridSkeleton/    # скелетон-заглушка
 │   └── sections/               # Секции страниц
 ├── layouts/        # Layout-обёртки
 ├── mocks/          # Фейковые данные (mock-ответы)
