@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-export function useScrolled(threshold: number = 20) {
+export function useScrolled(area: number) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > threshold);
+      setIsScrolled(window.scrollY > area);
     };
 
     handleScroll(); // выставить начальное значение, если страница уже прокручена
@@ -14,7 +14,7 @@ export function useScrolled(threshold: number = 20) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [threshold]);
+  }, [area]);
 
   return isScrolled;
 }

@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 80px 64px;
+    padding: 80px 64px 50px 64px;
 }
 
 .global-title__text {
@@ -55,7 +55,7 @@
 
 @media screen and (max-width: 480px) {
     .global-title {
-        padding: 36px 16px;
+        padding: 36px 16px 20px;;
         gap: 12px;
     }
 
@@ -67,7 +67,7 @@
 
 @media screen and (max-width: 360px) {
     .global-title {
-        padding: 28px 12px;
+        padding: 28px 12px 14px;
         gap: 10px;
     }
 

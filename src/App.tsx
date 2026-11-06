@@ -7,7 +7,7 @@ import { BackToTopButton } from "./ui/backToTop/BackToTop.tsx"; //компоне
 import Home from "./pages/home/ui/Home.tsx"; // домашняя страница приложения
 
 import ProductPage from "./pages/product/ProductPage.tsx"; // страница товара
-import SearchPage from "./pages/search/SearchPage.tsx"; // страница поиска товаров
+import {SearchPage} from "./pages/search/SearchPage.tsx"; // страница поиска товаров
 
 import Login from "./pages/login/ui/Login.tsx"; // страница входа (пока только UI/UX)
 import Register from "./pages/register/ui/Register.tsx"; // страница регистрации (пока только UI/UX)

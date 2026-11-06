@@ -414,31 +414,3 @@
         display: none;
     }
 }
-
-/* Landscape on short phones — hide scroll cue, tighten gaps */
-@media screen and (max-height: 520px) and (orientation: landscape) {
-    .hero {
-        min-height: 420px;
-    }
-
-    .hero__content {
-        gap: 16px;
-    }
-
-    .hero__scroll {
-        display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero__image,
-    .hero__eyebrow,
-    .hero__title-line,
-    .hero__button,
-    .hero__scroll,
-    .hero__scroll-dot {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-}

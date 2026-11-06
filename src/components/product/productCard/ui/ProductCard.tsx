@@ -6,7 +6,7 @@ import type { ProductCardProps } from "../model/types.ts";
 
 import "./ProductCard.css";
 
-export function ProductCard({ id, image, name, price }: ProductCardProps) {
+export function ProductCard({ id, image, name, price, brand }: ProductCardProps) {
   const [favorite, setFavorite] = useState(false);
 
   return (
@@ -33,11 +33,14 @@ export function ProductCard({ id, image, name, price }: ProductCardProps) {
       </div>
 
       <div className="product-card__info">
-        <h4 className="product-card__title">
-          <Link to={`/product/${id}`} className="product-card__link">
-            {name}
-          </Link>
-        </h4>
+        <div className="product-card__text">
+          {brand && <p className="product-card__brand">{brand}</p>}
+          <h4 className="product-card__title">
+            <Link to={`/product/${id}`} className="product-card__link">
+              {name}
+            </Link>
+          </h4>
+        </div>
         <p className="product-card__price">{price}$</p>
       </div>
     </article>

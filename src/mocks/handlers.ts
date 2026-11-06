@@ -7,7 +7,7 @@ export const handlers = [
     const url = new URL(request.url);
     const searchQuery = url.searchParams.get("q")?.toLowerCase() || "";
 
-    await delay(250); // Небольшая задержка сети (имитация задержки)
+    await delay(2000); // Небольшая задержка сети (имитация задержки)
 
     if (!searchQuery) {
       return HttpResponse.json([]);

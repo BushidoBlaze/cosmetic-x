@@ -406,35 +406,3 @@
         padding: 12px 18px;
     }
 }
-
-@media screen and (max-height: 520px) and (orientation: landscape) {
-    .not-found {
-        min-height: 420px;
-    }
-
-    .not-found__content {
-        gap: 14px;
-    }
-
-    .not-found__code,
-    .not-found__title {
-        font-size: clamp(24px, 5vw, 36px);
-    }
-
-    .not-found__mark {
-        bottom: 12px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .not-found__image,
-    .not-found__eyebrow,
-    .not-found__title-line,
-    .not-found__subtitle,
-    .not-found__button,
-    .not-found__mark {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-}
