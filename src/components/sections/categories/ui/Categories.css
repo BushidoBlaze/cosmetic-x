@@ -221,15 +221,3 @@
         letter-spacing: 1.5px;
     }
 }
-
-@media (prefers-reduced-motion: reduce) {
-    .categories__image,
-    .categories__overlay,
-    .categories__cta {
-        transition: none;
-    }
-
-    .categories__tile:hover .categories__image {
-        transform: none;
-    }
-}

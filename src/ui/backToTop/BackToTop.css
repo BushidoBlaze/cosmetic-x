@@ -130,11 +130,3 @@
         height: 42px;
     }
 }
-
-@media (prefers-reduced-motion: reduce) {
-    .back-to-top,
-    .back-to-top__icon,
-    .back-to-top__progress-bar {
-        transition: none;
-    }
-}

@@ -425,34 +425,3 @@
     height: 42px;
   }
 }
-
-@media screen and (max-height: 520px) and (orientation: landscape) {
-  .video-hero {
-    min-height: 480px;
-    padding: 24px 16px;
-  }
-
-  .video-hero__body {
-    gap: 20px;
-  }
-
-  .video-hero__play {
-    width: 56px;
-    height: 56px;
-  }
-
-  .video-hero--started .video-hero__play {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .video-hero__video {
-    transition: none;
-  }
-
-  .video-hero__play {
-    animation: none;
-  }
-}

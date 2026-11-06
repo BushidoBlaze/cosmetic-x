@@ -110,12 +110,6 @@
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .ad-bar__track {
-        animation: none;
-    }
-}
-
 @media screen and (max-width: 1024px) {
     .ad-bar {
         font-size: 12.5px;
