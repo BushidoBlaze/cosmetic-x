@@ -1,32 +1,45 @@
-import { useSearchParams, Link } from "react-router-dom";
+// Глобальные библиотеки
+import { useSearchParams } from "react-router-dom";
+
+// Компоненты
+import { SearchEmpty } from "./components/SearchEmpty.tsx";
+import { SearchHeader } from "./components/SearchHeader.tsx";
+import { SearchResults } from "./components/SearchResults.tsx";
+
+// Хуки
 import { useProductSearch } from "@/components/interactiveSearch/hooks/useProductSearch.ts";
 
-export default function SearchPage() {
+import "./SearchPage.css";
+
+export function SearchPage() {
   const [searchParams] = useSearchParams();
   const query = (searchParams.get("q") ?? "").trim();
 
   const { products, isLoading } = useProductSearch(query);
 
-  if (query === "") return <p>Введите поисковый запрос</p>;
-  if (isLoading) return <p>Загрузка...</p>;
+  let content; // Контент на странице
 
-  return (
-    <section>
-      <h1>Результаты по запросу {query}</h1>
+  // В случае загрузки контента
+  if (isLoading) {
+    <p className="spianer">Сюда можно спинер загрузки прикрутить</p>
 
-      {products.length === 0 ? (
-        <p>Ничего не найдено</p>
-      ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              <Link to={`/product/${product.id}`}>
-                {product.name} — {product.brand}, ${product.price}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
-  );
+    // В случае если после загрузки контента, похожий контент не обнаружен
+  } else if (products.length === 0) {
+    content = (
+      <SearchEmpty
+        title="Ничего не найдено"
+        text="Проверьте написание или попробуйте изменить запрос."
+      />
+    );
+    // В случае успешной загрузки контента
+  } else {
+    content = (
+      <>
+        <SearchHeader count={products.length} />
+        <SearchResults products={products} />
+      </>
+    );
+  }
+
+  return <div className="search-page">{content}</div>;
 }
