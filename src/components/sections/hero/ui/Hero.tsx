@@ -40,7 +40,7 @@ export function Hero() {
 
         <NavLink className="hero__button" to={content.buttonTo}>
           <span>{content.buttonLabel}</span>
-          <ArrowRight size={16} strokeWidth={1.5} />
+          <ArrowRight size="1rem" strokeWidth={1.5} />
         </NavLink>
       </div>
 
