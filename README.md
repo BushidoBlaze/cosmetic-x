@@ -28,6 +28,7 @@
 - Страница результатов поиска ![Ready](https://img.shields.io/badge/ready-brightgreen)
 - Страница товара ![Early access](https://img.shields.io/badge/early_access-orange)
 - Обновлён дизайн шапки страницы для десктоп и моб. устройств ![New](https://img.shields.io/badge/New-brightgreen)
+- Больше новых изображений товаров для большей реалистичности ![New](https://img.shields.io/badge/New-brightgreen)
 
 ## Скриншоты
 ### Hero-секция
