@@ -37,9 +37,9 @@ export function Header({ transparentOnTop = false }: HeaderProps) {
               onClick={() => setIsMenuOpen((v) => !v)}
             >
               {isMenuOpen ? (
-                <X size={22} strokeWidth={1.5} />
+                <X size="1.375rem" strokeWidth={1.5} />
               ) : (
-                <Menu size={22} strokeWidth={1.5} />
+                <Menu size="1.375rem" strokeWidth={1.5} />
               )}
             </button>
           </div>
@@ -79,7 +79,7 @@ export function Header({ transparentOnTop = false }: HeaderProps) {
                 tabIndex={-1}
                 readOnly
               />
-              <Search size={20} strokeWidth={1.5} />
+              <Search size="1.25rem" strokeWidth={1.5} />
             </button>
           </div>
 
@@ -89,7 +89,7 @@ export function Header({ transparentOnTop = false }: HeaderProps) {
               {navigation.iconsArray.map(({ to, icon: LucideIcons, badge }) => (
                 <li className="icons-list__item" key={to}>
                   <NavLink className="icons-list__link" to={to}>
-                    <LucideIcons size={20} strokeWidth={1.5} />
+                    <LucideIcons size="1.25rem" strokeWidth={1.5} />
 
                     {badge !== undefined && badge > 0 && (
                       <span className="icons-list__badge">
